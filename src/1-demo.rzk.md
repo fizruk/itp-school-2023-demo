@@ -112,6 +112,8 @@ We will use (the only supported) `rzk-1` dialect:
 
 ```rzk
 #lang rzk-1
+
+#set-option "render" = "svg"
 ```
 
 The rest of the file contains primarily of `#!rzk #define`-statements,
@@ -386,6 +388,20 @@ Tope layer adds logical constraints on the points in a cube,
 Mostly for technical reasons, we define shapes as mappings from cubes into the `#!rzk TOPE` universe.
 For example, here is a shape that carves a (directed) triangle out of a (directed) square:
 
+<svg class="rzk-render" viewBox="-175 -100 350 375" width="150" height="150">
+  <path d="M -88.57160646618001 -39.70915201762215 L 98.4961027394271 -39.70915201762215 L 89.32046645922577 100.78557152253414 Z" style="fill: orange; opacity: 0.2"><title></title></path>
+  <text x="33.08165424415762" y="7.122422495763279" fill="orange"></text>
+  <polyline points="-90.03982894447489,-47.97354751998429 90.03982894447466,-47.97354751998429" stroke="orange" stroke-width="3" marker-end="url(#arrow)"><title></title></polyline>
+  <text x="-1.1368683772161603e-13" y="-47.97354751998429" fill="orange" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="-94.34447446980596,-35.57774791227483 83.54960825780415,104.91856291954896" stroke="orange" stroke-width="3" marker-end="url(#arrow)"><title></title></polyline>
+  <text x="-5.3974331060009035" y="34.670407503637065" fill="orange" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="108.73641627786131,-28.016064827507464 100.54837539908644,97.35687983478158" stroke="orange" stroke-width="3" marker-end="url(#arrow)"><title></title></polyline>
+  <text x="104.64239583847387" y="34.67040750363706" fill="orange" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <text x="-110.03982894447489" y="-47.97354751998429" fill="orange">•</text>
+  <text x="110.03982894447466" y="-47.97354751998429" fill="orange">•</text>
+  <text x="99.24496273247308" y="117.31436252725841" fill="orange">•</text>
+</svg>
+
 ```rzk
 #define Δ²
   : (2 × 2) → TOPE
@@ -393,6 +409,16 @@ For example, here is a shape that carves a (directed) triangle out of a (directe
 ```
 
 Another example would be the horn shape that only takes two edges of a square:
+
+<svg class="rzk-render" viewBox="-175 -100 350 375" width="150" height="150">
+  <polyline points="-90.03982894447489,-47.97354751998429 90.03982894447466,-47.97354751998429" stroke="orange" stroke-width="3" marker-end="url(#arrow)"><title></title></polyline>
+  <text x="-1.1368683772161603e-13" y="-47.97354751998429" fill="orange" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="108.73641627786131,-28.016064827507464 100.54837539908644,97.35687983478158" stroke="orange" stroke-width="3" marker-end="url(#arrow)"><title></title></polyline>
+  <text x="104.64239583847387" y="34.67040750363706" fill="orange" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <text x="-110.03982894447489" y="-47.97354751998429" fill="orange">•</text>
+  <text x="110.03982894447466" y="-47.97354751998429" fill="orange">•</text>
+  <text x="99.24496273247308" y="117.31436252725841" fill="orange">•</text>
+</svg>
 
 ```rzk
 #define Λ
@@ -428,10 +454,24 @@ Rzk provides an implicit coercion, allowing shorter definitions:
 Mapping from a shape into a type, effectively selects a concrete diagram in it.
 We can select a subdiagram, simply by restricting to a subshape:
 
+<svg class="rzk-render" viewBox="-175 -100 350 375" width="150" height="150">
+  <path d="M -88.57160646618001 -39.70915201762215 L 98.4961027394271 -39.70915201762215 L 89.32046645922577 100.78557152253414 Z" style="fill: gray; opacity: 0.2"><title>f</title></path>
+  <text x="33.08165424415762" y="7.122422495763279" fill="gray">f</text>
+  <polyline points="-90.03982894447489,-47.97354751998429 90.03982894447466,-47.97354751998429" stroke="purple" stroke-width="3" marker-end="url(#arrow)"><title>f</title></polyline>
+  <text x="-1.1368683772161603e-13" y="-47.97354751998429" fill="purple" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke">f</text>
+  <polyline points="-94.34447446980596,-35.57774791227483 83.54960825780415,104.91856291954896" stroke="gray" stroke-width="3" marker-end="url(#arrow)"><title>f</title></polyline>
+  <text x="-5.3974331060009035" y="34.670407503637065" fill="gray" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke">f</text>
+  <polyline points="108.73641627786131,-28.016064827507464 100.54837539908644,97.35687983478158" stroke="purple" stroke-width="3" marker-end="url(#arrow)"><title>f</title></polyline>
+  <text x="104.64239583847387" y="34.67040750363706" fill="purple" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke">f</text>
+  <text x="-110.03982894447489" y="-47.97354751998429" fill="purple">f</text>
+  <text x="110.03982894447466" y="-47.97354751998429" fill="purple">f</text>
+  <text x="99.24496273247308" y="117.31436252725841" fill="purple">f</text>
+</svg>
+
 ```rzk
 #define horn-restriction
   (A : U)
-  : (Δ² → A) → (Λ → A)
+  : (f : Δ² → A) → (Λ → A)
   := \ f t → f t
 ```
 
@@ -441,6 +481,27 @@ checking that provided values agree (definitionally) on the intersections
 of these shapes.
 
 For example, given a triangle, we can construct a square:
+
+<svg class="rzk-render" viewBox="-175 -100 350 375" width="150" height="150">
+  <path d="M -99.0358460500274 -31.444756515260025 L -89.86020976982607 109.04996702489628 L 78.85622687537837 109.04996702489628 Z" style="fill: red; opacity: 0.2"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></path>
+  <text x="-36.6799429814917" y="62.21839251151084" fill="red"></text>
+  <path d="M -88.57160646618001 -39.70915201762215 L 98.4961027394271 -39.70915201762215 L 89.32046645922577 100.78557152253414 Z" style="fill: red; opacity: 0.2"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></path>
+  <text x="33.08165424415762" y="7.122422495763279" fill="red"></text>
+  <polyline points="-108.73641627786154,-28.016064827507464 -100.54837539908667,97.35687983478158" stroke="red" stroke-width="3" marker-end="url(#arrow)"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></polyline>
+  <text x="-104.6423958384741" y="34.67040750363706" fill="red" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="-90.03982894447489,-47.97354751998429 90.03982894447466,-47.97354751998429" stroke="red" stroke-width="3" marker-end="url(#arrow)"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></polyline>
+  <text x="-1.1368683772161603e-13" y="-47.97354751998429" fill="red" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="-94.34447446980596,-35.57774791227483 83.54960825780415,104.91856291954896" stroke="red" stroke-width="3" marker-end="url(#arrow)"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></polyline>
+  <text x="-5.3974331060009035" y="34.670407503637065" fill="red" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="-79.24496273247331,117.31436252725841 79.24496273247308,117.31436252725841" stroke="red" stroke-width="3" marker-end="url(#arrow)"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></polyline>
+  <text x="-1.1368683772161603e-13" y="117.31436252725841" fill="red" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <polyline points="108.73641627786131,-28.016064827507464 100.54837539908644,97.35687983478158" stroke="red" stroke-width="3" marker-end="url(#arrow)"><title>recOR (π₁ x₂ ≤ π₂ x₂ ↦ triang…</title></polyline>
+  <text x="104.64239583847387" y="34.67040750363706" fill="red" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <text x="-110.03982894447489" y="-47.97354751998429" fill="red">•</text>
+  <text x="-99.24496273247331" y="117.31436252725841" fill="red">•</text>
+  <text x="110.03982894447466" y="-47.97354751998429" fill="red">•</text>
+  <text x="99.24496273247308" y="117.31436252725841" fill="red">•</text>
+</svg>
 
 ```rzk
 #define unfolding-square
@@ -462,6 +523,13 @@ we provide an explicit term of the proper type.
 
 For example, taking a diagram in `A` correspoding to the directed interval `#!rzk 2`
 and fixing the endpoints, we get the type of all arrows between two given points in `A`:
+
+<svg class="rzk-render" viewBox="-175 -100 350 375" width="150" height="150">
+  <polyline points="-79.24496273247331,117.31436252725841 79.24496273247308,117.31436252725841" stroke="blue" stroke-width="3" marker-end="url(#arrow)"><title></title></polyline>
+  <text x="-1.1368683772161603e-13" y="117.31436252725841" fill="blue" stroke="white" stroke-width="10" stroke-opacity=".8" paint-order="stroke"></text>
+  <text x="-99.24496273247331" y="117.31436252725841" fill="purple">x</text>
+  <text x="99.24496273247308" y="117.31436252725841" fill="purple">y</text>
+</svg>
 
 ```rzk
 #define hom
