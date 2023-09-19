@@ -1,13 +1,12 @@
-site_name: "rzk formalisation project template"
-repo_url: https://github.com/rzk-lang/rzk-project-template
-repo_name: rzk-lang/rzk-project-template
+site_name: "Rzk demo for ITP school in Regensburg, September 18–29, 2023"
+repo_url: https://github.com/fizruk/itp-school-2023-demo
+repo_name: fizruk/itp-school-2023-demo
 edit_uri: edit/master
 
 docs_dir: src
 nav:
-  - General: index.md
-  - Formalisations:
-      - Example: 0-example.rzk.md
+  - Demo: 1-demo.rzk.md
+  - Exercises: 2-exercises.rzk.md
 
 markdown_extensions:
   - admonition
@@ -46,14 +45,14 @@ theme:
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      primary: amber
+      primary: blue-gray
       scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
-      primary: black
+      primary: teal
       scheme: slate
       toggle:
         icon: material/brightness-4
@@ -63,6 +62,9 @@ extra_javascript:
   - javascript/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - assets/css/rzk-render.css
 
 plugins:
   - search
