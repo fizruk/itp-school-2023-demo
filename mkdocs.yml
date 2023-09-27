@@ -1,7 +1,7 @@
 site_name: "Rzk demo for ITP school in Regensburg, September 18–29, 2023"
 repo_url: https://github.com/fizruk/itp-school-2023-demo
 repo_name: fizruk/itp-school-2023-demo
-edit_uri: edit/master
+edit_uri: edit/main
 
 docs_dir: src
 nav:
